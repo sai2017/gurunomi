@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  background-image: url("./nomigazo.jpg");
+  background-size: cover;
+  background-position: top;
+  height: 500px;
+}
+
+header h1 {
+  color: white;
+  padding-top: 50px;
+  margin: 0;
+  font-size: 70px;
+}
+
+header h3 {
+  color: white;
+}

@@ -1,4 +1,15 @@
 import React, { Component } from 'react';
+import './ShopList.css';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 
 class ShopList extends React.Component {
 
@@ -6,7 +17,7 @@ class ShopList extends React.Component {
     shops: []
   };
 
-  onInputChangeHandler = () => {
+  onCurrentLocationHandler = () => {
     let list = [];
     const A = this.props.pancakes.map((pancake) => {
       const lat = this.props.lat;
@@ -36,19 +47,39 @@ class ShopList extends React.Component {
   }
 
   render(){
+
     return(
       <div>
-        <button id="text-button" onClick={() => this.onInputChangeHandler()}>現在地を取得する</button>
+        <Button variant="contained" color="primary" id="text-button" onClick={() => this.onCurrentLocationHandler()}>
+          現在地を取得する
+        </Button>
         <div id="view">
           {
             // console.log(this.state.shops)
             this.state.shops.map((shop, index) => {
               // console.log(shop);
               return (
-                <div key={index}>
-                  <li key={index}>{shop.name}</li>
-                  <img src={shop.image_url.shop_image1} alt=""/>
-                </div>
+                  <div key={index}>
+                    <Card class="card">
+                      <a href={shop.url} target="_blank">
+                        <CardActionArea class="card-area">
+                          <CardMedia class="card-media">
+                            <img src={shop.image_url.shop_image1} class="shop-image" alt=""/>
+                          </CardMedia>
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              <ul>
+                                <li key={index}>{shop.name}</li>
+                                <li key={index}>TEL:{shop.tel}</li>
+                                <li key={index}>{shop.address}</li>
+                              </ul>
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </a>
+                    </Card>
+                  </div>
+
               )
 
             })

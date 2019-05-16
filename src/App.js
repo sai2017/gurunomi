@@ -39,9 +39,11 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <header>
+          <h1>ぐる飲み！</h1>
+          <h3>〜現在地から朝まで飲めるお店を探そう！〜</h3>
+        </header>
         <ShopList pancakes={this.state.pancakes} lat={this.state.lat} long={this.state.long}/>
-        <div>Latitude: {this.state.lat}</div>
-        <div>longitude: {this.state.long}</div>
       </div>
     );
   }
