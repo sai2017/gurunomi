@@ -69,9 +69,9 @@ class ShopList extends React.Component {
                           <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                               <ul>
-                                <li key={index}>{shop.name}</li>
-                                <li key={index}>TEL:{shop.tel}</li>
-                                <li key={index}>{shop.address}</li>
+                                <li>{shop.name}</li>
+                                <li>TEL:{shop.tel}</li>
+                                <li>{shop.address}</li>
                               </ul>
                             </Typography>
                           </CardContent>
