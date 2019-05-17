@@ -17,13 +17,13 @@ class App extends React.Component {
 
   componentDidMount() {
 
-    const params = { keyid: "222a7aadbbfa9f1a07b6c45cef4863b9",
+    const params = { keyid: process.env.REACT_APP_API_KEY,
                      category_l: "RSFST09000",
                      address: "東京都",
                      until_morning: 1,
                      hit_per_page: 10
                    };
-    axios.get('https://api.gnavi.co.jp/RestSearchAPI/v3/', {params})
+    axios.get(process.env.REACT_APP_API_URL, {params})
          .then(response => {
            this.setState({ pancakes: response.data.rest });
            // console.log(this.state.pancakes);
@@ -42,6 +42,14 @@ class App extends React.Component {
         <header>
           <h1>ぐる飲み！</h1>
           <h3>〜現在地から朝まで飲めるお店を探そう！〜</h3>
+          <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
+            <img src="https://api.gnavi.co.jp/api/img/credit/api_265_65.gif"
+                 width="265"
+                 height="65"
+                 border="0"
+                 alt="グルメ情報検索サイト　ぐるなび"
+            />
+          </a>
         </header>
         <ShopList pancakes={this.state.pancakes} lat={this.state.lat} long={this.state.long}/>
       </div>
